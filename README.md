@@ -36,7 +36,7 @@ These instructions will help you set up and run the Simple Shell on your local m
 ## Usage
 1. Run the shell:
    ```
-   ./simple-shell
+   ./hsh
    ```
 
 2. You can now execute basic shell commands, such as `ls`, `pwd`, and `echo`.
