@@ -44,17 +44,17 @@ These instructions will help you set up and run the Simple Shell on your local m
 3. For simple input/output redirection:
    - To redirect input from a file:
      ```
-     ./simple-shell < input.txt
+     ./hsh < input.txt
      ```
 
    - To redirect output to a file:
      ```
-     ./simple-shell > output.txt
+     ./hsh > output.txt
      ```
 
    - To execute a command and save the output to a file:
      ```
-     ./simple-shell -c "ls" > output.txt
+     ./hsh -c "ls" > output.txt
      ```
 
    Replace `ls` with your desired command.
