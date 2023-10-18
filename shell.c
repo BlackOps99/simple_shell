@@ -32,11 +32,6 @@ int main(int argc, char *argv[], char **env)
 
 		if (_strcmp(buf, "exit\n") == 0)
 			break;
-		if (strncmp(buf, "cd", 2) == 0) {
-            builtin_cd(buf);
-            continue;
-        }
-		/*	
 		if (buf[0] == 'c' && buf[1] == 'd' && buf[2] == ' ')
 		{
 			buf[_strlen(buf) - 1] = 0;
@@ -45,7 +40,6 @@ int main(int argc, char *argv[], char **env)
 				shellName, lineCount, buf + 3);
 			continue;
 		}
-		*/
 		pid = forker();
 		if (pid == 0)
 			res = runcmd(parsecmd(buf));

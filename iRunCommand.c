@@ -41,6 +41,53 @@ int runcmd(struct cmd *cmd)
 }
 
 /**
+ * find_in_path - Search for an executable in PATH directories.
+ * @command: The executable file to search for.
+ * Searches for the given executable in the directories listed in the PATH
+ * environment variable. Returns a dynamically allocated full path if found
+ * and executable; otherwise, returns NULL.
+ * Return: dynamically allocated string with full path or NULL if not found
+ */
+char *find_in_path(const char *command)
+{
+	char full_path[1024];
+	char *path_copy;
+	char *path = get_env_value(my_env, "PATH");
+	char *token;
+
+	if (path == NULL)
+	{
+		return (NULL);
+	}
+
+	path_copy = strdup(path);
+	if (path_copy == NULL)
+	{
+		perror("strdup");
+		return (NULL);
+	}
+
+	token = strtok(path_copy, ":");
+	while (token != NULL)
+	{
+		strcpy(full_path, token);
+		strcat(full_path, "/");
+		strcat(full_path, command);
+
+		if (access(full_path, X_OK) == 0)
+		{
+			free(path_copy);
+			return (strdup(full_path));
+		}
+
+		token = strtok(NULL, ":");
+	}
+
+	free(path_copy);
+	return (NULL);
+}
+
+/**
  * runExec - Execute an executable command.
  * @cmd: A pointer to the executable command structure.
  * This function attempts to execute an executable command by invoking execvp.
@@ -51,6 +98,7 @@ int runcmd(struct cmd *cmd)
 int runExec(struct cmd *cmd)
 {
 	int r = 0;
+	char *path = NULL;
 	struct execcmd *ecmd;
 
 	ecmd = (struct execcmd *)cmd;
@@ -60,7 +108,17 @@ int runExec(struct cmd *cmd)
 		free_cmd(cmd);
 		_exit(0);
 	}
-	if (execvp(ecmd->argv[0], ecmd->argv) == -1)
+	if (ecmd->argv[0][0] != '/')
+	{
+		path = find_in_path(ecmd->argv[0]);
+	}
+
+	if (path == NULL)
+	{
+		path = ecmd->argv[0];
+	}
+
+	if (execve(path, ecmd->argv, my_env) == -1)
 	{
 		r = 127;
 	}

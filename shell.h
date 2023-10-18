@@ -121,6 +121,8 @@ struct cmd *execcmd(void);
 struct cmd *redircmd(struct cmd *subcmd, char *file, int type);
 struct cmd *pipecmd(struct cmd *left, struct cmd *right);
 
+char *get_env_value(char **envp, const char *name);
+
 /* Memory furnctions handle */
 void *_memset(void *__s, int __c, size_t __n);
 
