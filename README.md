@@ -63,6 +63,6 @@ These instructions will help you set up and run the Simple Shell on your local m
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Authers
-Mahmoud Labib Sallam
-Mostafa Mahmoud Lotfy 
+- Mahmoud Labib Sallam
+- Mostafa Mahmoud Lotfy 
 
