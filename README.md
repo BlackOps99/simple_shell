@@ -7,7 +7,6 @@ A minimalistic shell program that allows users to execute basic command-line ope
 - [Features](#features)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Features
@@ -64,5 +63,6 @@ These instructions will help you set up and run the Simple Shell on your local m
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Authers
-
+Mahmoud Labib Sallam
+Mostafa Mahmoud Lotfy 
 
