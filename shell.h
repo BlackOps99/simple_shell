@@ -17,9 +17,6 @@
 
 #define MAXARGS 10
 
-/* Builtin functions */
-void builtin_cd(char *buf);
-
 /* GLOBAL VARIABLES */
 extern int lineCount;
 extern char *shellName;
